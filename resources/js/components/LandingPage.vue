@@ -106,6 +106,14 @@
                           </textPath>
                         </text>
                       </svg>
+                      <div class="text-center mt-3" v-if="this.myCroppa.imageSet">
+                        <v-btn icon class="mx-4" large @click="myCroppa.rotate(-1)">
+                          <v-icon>mdi-rotate-left</v-icon>
+                        </v-btn>
+                        <v-btn icon class="mx-4" large @click="myCroppa.rotate()">
+                          <v-icon>mdi-rotate-right</v-icon>
+                        </v-btn>
+                      </div>
                     </div>
                   </div>
                 </div>

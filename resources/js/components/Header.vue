@@ -14,7 +14,7 @@
       <div>TAGMKR.IO</div>
       <v-spacer></v-spacer>
       <div>
-        <span class="mx-2">Follow us on <a href="https://www.linkedin.com/company/david-europe" target="_blank"><v-icon color="#0e76a8">mdi-linkedin</v-icon></a></span>
+        <span class="mx-2"><span v-if="$vuetify.breakpoint.mdAndUp">Follow us on</span> <a href="https://www.linkedin.com/company/david-europe" target="_blank"><v-icon color="#0e76a8">mdi-linkedin</v-icon></a></span>
          | 
          <span class="mx-2">Built by <a href="https://davideurope.com" target="_blank"> David Europe </a></span>
          </div>
