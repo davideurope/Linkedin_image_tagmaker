@@ -10,8 +10,6 @@ class DownloadController extends Controller
     public function download(Request $request)
     {
         try {
-            \Log::info($request->parser['ua']);
-            \Log::info($request->all());
             $download = new Download();
             if ($request['hashtag'] == null) {
                 $download->hashtag = '';
@@ -94,7 +92,6 @@ class DownloadController extends Controller
             $download->save();
             return response()->json('', 200);
         } catch (\Throwable $th) {
-            \Log::info($th);
             return response()->json('', 200);
         }
     }
