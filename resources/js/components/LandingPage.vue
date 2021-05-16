@@ -43,6 +43,17 @@
                       >RESTART</v-btn
                     >
                   </div>
+                  <div
+                    class="text-center mt-3"
+                    v-if="this.myCroppa.imageSet && showBtn"
+                  >
+                    <v-btn icon class="mx-4" large @click="myCroppa.rotate(-1)">
+                      <v-icon>mdi-rotate-left</v-icon>
+                    </v-btn>
+                    <v-btn icon class="mx-4" large @click="myCroppa.rotate()">
+                      <v-icon>mdi-rotate-right</v-icon>
+                    </v-btn>
+                  </div>
 
                   <div class="d-flex justify-center pa-3">
                     <div
@@ -106,14 +117,6 @@
                           </textPath>
                         </text>
                       </svg>
-                      <div class="text-center mt-3" v-if="this.myCroppa.imageSet">
-                        <v-btn icon class="mx-4" large @click="myCroppa.rotate(-1)">
-                          <v-icon>mdi-rotate-left</v-icon>
-                        </v-btn>
-                        <v-btn icon class="mx-4" large @click="myCroppa.rotate()">
-                          <v-icon>mdi-rotate-right</v-icon>
-                        </v-btn>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -180,7 +183,7 @@ export default {
         var dst = ctx.createImageData(canvas.width, canvas.height);
         dst.data.set(arr);
         ctx.putImageData(dst, 0, 0);
-      }.bind(this);      
+      }.bind(this);
       img.src = `${process.env.MIX_APP_URL}/images/overlay.svg`;
     },
     RGBToHex(r, g, b) {
@@ -248,13 +251,15 @@ export default {
             link.click();
           });
 
-          axios.post("/download-image", {
-            hashtag: this.hashtag,
-            parser: this.parser,
-            session: this.session,
-          })
-            .then( () => {}).catch( (err) => {});
-            
+          axios
+            .post("/download-image", {
+              hashtag: this.hashtag,
+              parser: this.parser,
+              session: this.session,
+            })
+            .then(() => {})
+            .catch((err) => {});
+
           return;
         },
         "image/png",
